@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Specifications</title>
+</head>
+<body>
+    <h1>System Specifications Ni Axel</h1>
+    <input type="text" id="userId" placeholder="Enter ID">
+    <button onclick="fetchSystemSpecs()">Get Specs</button>
+    <div id="specs"></div>
+
+<script>
+    function fetchSystemSpecs() {
+        let userId = document.getElementById('userId').value; 
+        
+        if (!userId) {
+            document.getElementById('specs').innerText = 'Please enter an ID';
+            return;
+        }
+
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://sherwinblack.github.io/WebSysApi/specs.json', true);
+
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                try {
+                    let response = JSON.parse(xhr.responseText);
+                    
+                    let userSpecs = response.find(item => item.id == userId);
+
+                    if (userSpecs) {
+                        let specDetails = `
+                            <h2>Specifications for User ID: ${userSpecs.id}</h2>
+                            <ul>
+                                <li><strong>User:</strong> ${userSpecs.userId }</li>
+                                <li><strong>CPU:</strong> ${userSpecs.cpu }</li>
+                                <li><strong>RAM:</strong> ${userSpecs.ram }</li>
+                                <li><strong>Storage:</strong> ${userSpecs.storage}</li>
+                                <li><strong>OS:</strong> ${userSpecs.os}</li>
+                            </ul>
+                        `;
+                        document.getElementById('specs').innerHTML = specDetails;
+                    } else {
+                        document.getElementById('specs').innerHTML = '<p class="error">ID not found</p>';
+                    }
+                } catch (e) {
+                    document.getElementById('specs').innerHTML = '<p class="error">Error parsing data</p>';
+                    console.error('JSON parsing error:', e);
+                }
+            } else {
+                document.getElementById('specs').innerHTML = '<p class="error">Error fetching data</p>';
+            }
+        };
+
+        xhr.onerror = function() {
+            document.getElementById('specs').innerHTML = '<p class="error">Network error occurred</p>';
+        };
+
+        xhr.send();
+    }
+</script>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    input, button {
+        padding: 8px;
+        margin: 10px 0;
+    }
+    #specs {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        min-height: 50px;
+    }
+    .error {
+        color: red;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 8px;
+    }
+</style>
+    
+</body>
+</html>
