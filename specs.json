@@ -1,0 +1,63 @@
+{   
+    "id": 1001,
+    "computer": {
+      "name": "Gaming Desktop Pro",
+      "type": "Desktop",
+      "manufacturer": "Custom Build",
+      "processor": {
+        "brand": "Intel",
+        "model": "Core i9-14900K",
+        "cores": 24,
+        "threads": 32,
+        "baseClockSpeed": 3.2,
+        "boostClockSpeed": 6.0,
+        "cacheSize": "36 MB",
+        "architecture": "64-bit"
+      },
+      "memory": {
+        "type": "DDR5",
+        "size": 32,
+        "speed": 6000,
+        "channels": 2,
+        "modules": [
+          {
+            "size": 16,
+            "brand": "Corsair"
+          },
+          {
+            "size": 16,
+            "brand": "Corsair"
+          }
+        ]
+      },
+      "storage": [
+        {
+          "type": "SSD",
+          "interface": "NVMe PCIe 4.0",
+          "brand": "Samsung",
+          "model": "980 Pro",
+          "capacity": 2000,
+          "readSpeed": 7000,
+          "writeSpeed": 5000
+        },
+        {
+          "type": "HDD",
+          "interface": "SATA III",
+          "brand": "Western Digital",
+          "model": "Black",
+          "capacity": 4000,
+          "rpm": 7200
+        }
+      ],
+      "graphics": {
+        "type": "Dedicated",
+        "brand": "NVIDIA",
+        "model": "GeForce RTX 4080",
+        "memory": {
+          "size": 16,
+          "type": "GDDR6X"
+        }
+      }
+
+    }
+}
