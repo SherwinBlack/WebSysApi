@@ -1,0 +1,18 @@
+{
+    "id": 1,
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "phone": "+63-963-70-468",
+    "adress": {
+        "street": "Buko street",
+        "city": "Valenzuela",
+        "Region": "NCR",
+        "zip": "4445"
+    },
+    "company": {
+        "name": "Tech Solutions",
+        "position": "Software Engineer",
+        "department": "Development"
+    }
+
+}
